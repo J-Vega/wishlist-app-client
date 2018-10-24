@@ -1,5 +1,12 @@
 language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: twNoivfKJt2Jyhj/QY1DOZCxxjl9du3TNZZk0ymN2aXhrn8CY5S32/WoqmMywLj8BfmdNcYZGqfEtmTXEDxDwlVjFOwGqGt9YY6wuR9eq52v7UAWfk3+8NF9ZrKHSUMgFyAERVaBI44BTPxGXo3FLZCCTZxLhKMOk/LAilrET3eOFlny9gRbAZSBmoWfBGfgwsWcaYC1qjEcEUkQhIEo4E6mweMCR6uAVHc7emER5mZLI/wnszUX6UnXKLfJzdTmuxMeq5dYQWkfbFSO1/QxKZ/kFJLRBG7XFwfqGmvEiJ2GjpGTlJlJBVREjxgqQRZ2pqqnHXgzi1I774rv9CC/3TPY/S618NTdZIBbYeEwMFnqvp4K2Hbc5YgLTe/b3jCxEEAnYw75c2rRRgXs5ccCeUMnZbAgKCR2hROGPnWOufr6sjvix8ZWqPSYxEN2L/tMjeMPc4NdKyluK1hvlUIloOE0Vy4YZFfykMBOTfgJYPo13LlL/RoHsvvgS9RtFGAuKGn8OLDcYFKLG6o2gUOLeVgoph0UudLqhmRJGPsD7TOBREVe2MRnWFEMXsgm6slKiBl5knpA0/Un62l5R6RRhOJRkxuA5ysk9bFuoX/2DsSGywGCpYltfVhybo4VX3ZaVFt3OkkwJABAceQZwfA+P/+FJBCIr5SJblPhwLCS/mM=
+  app: salty-eyrie-28927
+  on:
+    repo: J-Vega/wishlist-app-client
