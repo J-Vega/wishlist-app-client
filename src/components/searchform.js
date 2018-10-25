@@ -2,6 +2,8 @@ import React from 'react';
 
 import './searchform.css';
 
+// const {API_BASE_URL} = require('./config');
+
 import SearchResults from './searchresults.js';
 
 export default class SearchForm extends React.Component{
@@ -9,14 +11,14 @@ export default class SearchForm extends React.Component{
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  //ajax -> SearchResults
-  searchAPI(){};
 
   handleSubmit(event){
     event.preventDefault();
+    console.log("Searching...")
     //http://localhost:3000/Wishlist
-    fetch(`/Wishlist`,{
+    fetch(`https://api.bestbuy.com/v1/products((search=ipod))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,{
       method: 'get',
+      crossDomain:true,
       headers: {'Content-Type':'application/json'}
     })
     .then(res => {
