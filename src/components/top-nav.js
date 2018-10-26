@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LogInForm from './login-form.js';
+
 import './top-nav.css';
 
 export default function TopNav(){
@@ -7,20 +9,11 @@ export default function TopNav(){
 
 		<nav>
 		
-			<div className ="topnav full-row">
-				<div className ="col-4">
+			<div className ="col-4 topnav full-row">
+				
 				<a href={"/"} className="active">UniCart</a>
 				
-				<form className="js-signin-form">
-				    	<button type="submit signUpButton signup-link">Register</button>
-				      <input type="text" placeholder="Username" name="username"></input>
-				      <input type="text" placeholder="Password" name="psw"></input>
-				      
-				      <button type="submit signInButton">Login</button>
-				</form>
-				
-					
-				</div>
+				<LogInForm/>
 			</div>
 		</nav>
 	)

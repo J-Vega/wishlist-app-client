@@ -14,21 +14,23 @@ export default class SearchForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
+    event.preventDefault();
     console.log("Searching...")
-    //http://localhost:3000/Wishlist
-    fetch(`https://api.bestbuy.com/v1/products((search=ipod))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,{
-      method: 'get',
-      crossDomain:true,
-      headers: {'Content-Type':'application/json'}
+    Promise.all([
+      // fetch(`https://api.walmartlabs.com/v1/search?query=MACBOOK&format=json&apiKey=cwd2qzamfg6f523deuwhuxec&numItems=10`),
+      fetch(`https://api.bestbuy.com/v1/products((search=ipod))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`),
+      fetch(`https://api.bestbuy.com/v1/products((search=mac))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`),
+      //nodemon server.js to enable CORS => returns [[PromiseValue]] array
+      fetch(`http://localhost:3001/Walmart/Listings/?searchTerm=macbook`)
+    ])
+    .then(([a, b, c]) => {
+      console.log('A: ', a);
+      console.log('B: ', b.json());
+      console.log('C: ', c.json());
     })
-    .then(res => {
-      if(!res.ok){
-        return Promise.reject(res.statusText);
-      }
-      console.log(res);
-      return res.json();
-    });
-  };
+    .then(a => console.log(a))
+    .catch(err => console.log(err));
+    };
 
   render(){
 	return (

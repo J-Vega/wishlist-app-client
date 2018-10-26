@@ -1,3 +1,8 @@
+span{
+  display: inline-block;
+}
+
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -122,7 +127,7 @@ main{
   width:120px;
 }
 
-.topnav .login-container button {
+.signInButton, .signUpButton {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
@@ -134,7 +139,7 @@ main{
   cursor: pointer;
 }
 
-.topnav .login-container button:hover {
+.topnav .login-container button:hover, .signUpButton:hover {
   background-color: green;
 }
 
@@ -219,7 +224,7 @@ nav{
 
 .js-register-button,.signInButton{
     background-color: #93f18e;
-    margin-top: 12px;
+  
 }
 
 .js-register-button:hover,.signInButton:hover{
