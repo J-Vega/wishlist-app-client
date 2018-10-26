@@ -2,9 +2,9 @@ import React from 'react';
 
 import './searchresults.css';
 
-export default function SearchResults() {
-
-
+export default function SearchResults({result}) {
+	console.log(result);
+	
 	return(
 		<div>
 			<div className="tab">
@@ -16,7 +16,17 @@ export default function SearchResults() {
 			
 			<div id="Walmart-Tab" className="tabcontent">
 			  <h3>Walmart Results</h3>
-			  <div className='js-search-results-WALMART'></div>
+			  <div className='js-search-results-WALMART'>
+					{ 
+						!result.length ? '' : 
+						result[0].products.map(e => (
+							<div key={e.url}>
+								<div className="name">{e.name}</div>
+								<div className="price">$ {e.regularPrice}</div>
+							</div>
+						))
+					}
+				</div>
 			</div>
 
 			<div id="BestBuy-Tab" className="tabcontent">
