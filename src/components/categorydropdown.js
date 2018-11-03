@@ -13,22 +13,18 @@ export default class CategoryDropdown extends React.Component{
     }
 
     render(){
-        return (
-            <div className="category-dropdown-container">
-                <ul>
-                    <li>
-                        Groceries
-                    </li>
-                    <li>
-                        Presents
-                    </li>
-                    <li>
-                        Other
-                    </li>
+        return true;
+        // return (
+        //     <div className="category-dropdown-container">
+        //         <button>Add to wishlist</button> 
+        //             {/* //Drop down of caegories */}
 
-                </ul>
             
-            </div>
-        );
+        //     </div>
+        //     <button>Presents</button> 
+        //     <button>Groceries</button> 
+        //     <button>Events</button> 
+        //     <button>Other</button> 
+        // );
     }
 }
