@@ -47,7 +47,7 @@ export const login = (username, password) => dispatch => {
     console.log("logging in....");
     dispatch(authRequest());
     return (
-        fetch(`${API_BASE_URL}/login`, {
+        fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,13 +55,17 @@ export const login = (username, password) => dispatch => {
             body: JSON.stringify({
                 username,
                 password
-            })
+            }) 
         })
             // Reject any requests which don't return a 200 status, creating
             // errors which follow a consistent format
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
-            .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+            .then(({authToken}) => {
+                console.log("Logged in! Storing username and auth token");
+                storeAuthInfo(authToken, dispatch);
+                localStorage.setItem('userName', username); 
+            })
             .catch(err => {
                 const {code} = err;
                 const message =

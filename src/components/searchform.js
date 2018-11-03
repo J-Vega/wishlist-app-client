@@ -2,9 +2,9 @@ import React from 'react';
 
 import './searchform.css';
 
-// const {API_BASE_URL} = require('./config');
-
 import SearchResults from './searchresults.js';
+
+const {API_BASE_URL} = require ('../config');
 
 export default class SearchForm extends React.Component{
   constructor(props){
@@ -18,14 +18,12 @@ export default class SearchForm extends React.Component{
 
   handleSubmit(event){
     event.preventDefault();
-    console.log("Searching...")
+    console.log("Searching...") 
     const urls = [
-      // `https://api.walmartlabs.com/v1/search?query=MACBOOK&format=json&apiKey=cwd2qzamfg6f523deuwhuxec&numItems=10`,
-      `https://api.bestbuy.com/v1/products((search=ipod))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,
-      `https://api.bestbuy.com/v1/products((search=mac))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,
-      `https://api.bestbuy.com/v1/products((search=moniter))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`
-      //nodemon server.js to enable CORS => returns [[PromiseValue]] array
-      //`http://localhost:3000/Walmart/Listings/?searchTerm=macbook`
+      `${API_BASE_URL}/BestBuy/Listings/?searchTerm=macbook`,
+      `${API_BASE_URL}/Walmart/Listings/?searchTerm=macbook`,
+      `${API_BASE_URL}/Etsy/Listings/?searchTerm=macbook`
+
     ];
     let resultObj = [];
     Promise.all(urls.map(url => fetch(url)))
