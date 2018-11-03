@@ -21,8 +21,12 @@ export default function SearchResults({result}) {
 						!result.length ? '' : 
 						result[0].products.map(e => (
 							<div key={e.url}>
-								<div className="name">{e.name}</div>
-								<div className="price">$ {e.regularPrice}</div>
+								<div className="listing-name">{e.name}</div>
+								<div>Add to wishlist</div>
+								<div className="listing-price">$ {e.regularPrice}</div>
+								<div className="listing-price">$ {e.regularPrice}</div>
+								<img src={e.image}/>
+
 							</div>
 						))
 					}
