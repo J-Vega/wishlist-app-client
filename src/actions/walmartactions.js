@@ -11,9 +11,9 @@ export const fetchWalmartProducts = searchTerm => dispatch => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        dispatch(fetchProductsSuccess(data));
+        dispatch(fetchWalmartSuccess(data));
       })
-      .catch(error => dispatch(fetchProductsFailure(error)));
+      .catch(error => dispatch(fetchWalmartFailure(error)));
   
 }
 
@@ -26,19 +26,19 @@ function handleErrors(response) {
 }
 
 
-export const FETCH_PRODUCTS_BEGIN   = 'FETCH_PRODUCTS_BEGIN';
-export const fetchProductsBegin = () => ({
-  type: FETCH_PRODUCTS_BEGIN
+export const FETCH_WALMART_BEGIN   = 'FETCH_WALMART_BEGIN';
+export const fetchWalmartBegin = () => ({
+  type: FETCH_WALMART_BEGIN
 });
 
-export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
-export const fetchProductsSuccess = (products) => ({
-  type: FETCH_PRODUCTS_SUCCESS,
+export const FETCH_WALMART_SUCCESS = 'FETCH_WALMART_SUCCESS';
+export const fetchWalmartSuccess = (products) => ({
+  type: FETCH_WALMART_SUCCESS,
   payload: {products}
 });
 
-export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
-export const fetchProductsFailure = error => ({
-  type: FETCH_PRODUCTS_FAILURE,
+export const FETCH_WALMART_FAILURE = 'FETCH_WALMART_FAILURE';
+export const fetchWalmartFailure = error => ({
+  type: FETCH_WALMART_FAILURE,
   payload: { error }
 });
