@@ -2,7 +2,15 @@ import React from 'react';
 import CategoryDropdown from './categorydropdown';
 import './searchresults.css';
 
+// import addToWishlist from '../actions/wishlistactions';
+
 export default function SearchResults({result}) {
+
+	// function handleClick(item, category){
+	// 	console.log("Adding item to wishlist");
+	// 	fetch(addToWishlist(item));
+	// }
+
 	return(
 		<div>
 			<div className="tab">
@@ -49,8 +57,15 @@ export default function SearchResults({result}) {
 
 
 								{/* CALL ACTION ON CLICK, THIS SHOULD ONLY DISPLAY WHEN LOGGED IN */}
-								<button>ADD TO WISHLIST</button>
-								<CategoryDropdown/>
+								{/* <button 
+
+								onClick={(this.props.handleClick(values =>
+										this.onClick(values))}>
+										
+										ADD TO WISHLIST</button> */}
+
+
+								{/* <CategoryDropdown/> */}
 
 
 								<a className="listing-url" href={i.productUrl}>Buy Now!</a>
