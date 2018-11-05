@@ -1,67 +1,102 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { connect } from "react-redux";
+import thunk from 'redux-thunk';
 
+import SearchResults from './searchresults';
+import { fetchWalmartProducts } from "../actions/walmartactions";
+import { fetchEtsyProducts } from "../actions/etsyactions";
+import { fetchBestBuyProducts } from "../actions/bestbuyactions";
 import './searchform.css';
 
-// const {API_BASE_URL} = require('./config');
+const {API_BASE_URL} = require('../config');
 
-import SearchResults from './searchresults.js';
-
-export default class SearchForm extends React.Component{
-  constructor(props){
-    super(props);
+class SearchForm extends Component{
+  constructor(){
+    super();
     this.state = {
-      resultObj: []
-    }
-    
-    this.handleSubmit = this.handleSubmit.bind(this);
+      inputValue: '',
+      result: []
+    };
+    this.search = this.search.bind(this);
   }
 
-  handleSubmit(event){
-    event.preventDefault();
-    console.log("Searching...")
-    const urls = [
-      // `https://api.walmartlabs.com/v1/search?query=MACBOOK&format=json&apiKey=cwd2qzamfg6f523deuwhuxec&numItems=10`,
-      `https://api.bestbuy.com/v1/products((search=ipod))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,
-      `https://api.bestbuy.com/v1/products((search=mac))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`,
-      `https://api.bestbuy.com/v1/products((search=moniter))?apiKey=vrjst2v5zsgemp3jq44xwmz9&show=bestSellingRank,name,url,regularPrice,shortDescription,longDescription,image&pageSize=12&format=json`
-      //nodemon server.js to enable CORS => returns [[PromiseValue]] array
-      //`http://localhost:3000/Walmart/Listings/?searchTerm=macbook`
-    ];
-    let resultObj = [];
-    Promise.all(urls.map(url => fetch(url)))
-    .then(data => Promise.all(data.map(res => res.json())))
-    .then(json => {
+  //Update text value to use when dispatching fetch requests
+  updateInputValue(evt){
+    this.setState({
+      inputValue: evt.target.value
+    })
+  }
+
+  /*
+  Nov/4 comment
+    to get information: (Use Redux)
+    bind below fn to onClick
+    -- fix the async api call error !
+
+    -- And need more "Reduce" files for each dispatching to use redux module
+    -- take a look at a file: '/reducers/walreducer.js'
+    --------------------------
+    search(e){
+      e.preventDefault();
+      this.props.dispatch(fetchWalmartProducts(this.state.inputValue))
+      this.props.dispatch(fetchBestBuyProducts(this.state.inputValue));
+      this.props.dispatch(fetchEtsyProducts(this.state.inputValue));
+    }
+    ---------------------------
+  */
+
+  search(e){
+    e.preventDefault();
+
+    /*
+    Nov/4 comment
+      - why are you using the localhost url when getting api call from walmart?
+
+      -it will occur following error:
+      --SyntaxError: Unexpected token < in JSON at position 0
+
+      -the below api call will return plain HTML code of its index.html
+      -because the api call calling its localhost.
+    */
+    let apiUrls = [
+      `${API_BASE_URL}/Walmart/Listings/?searchTerm=macbook`,
+      `${API_BASE_URL}/BestBuy/Listings/?searchTerm=macbook`,
+      `${API_BASE_URL}/Etsy/Listings/?searchTerm=macbook`
+      ]
+    Promise.all(apiUrls.map(url =>
+      fetch(url).then(res => res.json())
+    ))
+    //if data.canonical exists...do this if not it's walmart
+    .then(data => {
       this.setState({
-        resultObj: json
+        result: data
       })
-    });
-    // .then(json => {
-      // console.log('A: ', jsonA);
-      // console.log('B: ', jsonB);
-      // console.log('C: ', jsonC);
-    // });
-    // .then(a => console.log(a))
-    // .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
   };
-
   render(){
-	return (
-		<div className="row">
-        <form className="js-search-form" onSubmit={this.handleSubmit}>
-          <div className ="col-1 search-container">
+      return (
+        <div className="row">
+            {/* <form className="js-search-form" onSubmit={this.handleSubmit}> */}
+            <form className="js-search-form" onSubmit={e => this.search(e)}>
+              <div className ="col-1 search-container"></div>
+              <div className ="col-2 search-container">
+                  <input value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)} type="text" className ="js-query searchBar searchTerm" required></input>
               </div>
               <div className ="col-2 search-container">
-              <input type="text" className ="js-query searchBar searchTerm" placeholder="111-111-1111" required></input>
+                  <button type ="submit" id= "searchButton" className ="searchButton">
+                    Search Listings
+                  </button>
               </div>
-              <div className ="col-2 search-container">
-          <button type ="submit" id= "searchButton" className ="searchButton">
-                Search Listings
-              </button>
-              </div>
-        </form>   
-        <SearchResults result={this.state.resultObj}/>
-    </div>
-	);
+            </form>
+            <SearchResults result = {this.state.result}/>   
+        </div>
+  );
+ }
 }
 
-}
+const mapStateToProps = state => ({ 
+  items: state
+})
+
+export default connect(mapStateToProps)(SearchForm)
