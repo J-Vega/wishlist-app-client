@@ -2,34 +2,28 @@ import React from 'react';
 
 import Listing from './productlisting';
 
-import 'wishlist.css';
+// import 'wishlist.css';
 
-export default function WishList() {
+export default function WishList({wishes}) {
 	return(
 		<div className="wishlist">
+			<h2>WISHLISK</h2>
 			<ul className="list">
 				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
-				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
-				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
+					{
+						wishes.map(i => (
+							<div>
+								<div className="name">{i.name}</div>
+								<div className="price">$ {i.salePrice}</div>
+								<img className="image" src={i.image} alt={i.name}/>
+								<a className="listing-url" href={i.productUrl}>Buy Now!</a>
+							</div>
+						))
+					}
+				</li>
 			</ul>
 
-			<ul className="list">
-				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
-				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
-				<li className="list-wrapper">
-					<Listing />
-				<li className="list-wrapper">
-			</ul>
+			
 		</div>
 
 
