@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
@@ -6,9 +6,10 @@ import './App.css';
 
 import Header from './header';
 import SearchForm from './searchform';
-
+import SearchResults from './searchresults';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
+
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
