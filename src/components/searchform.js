@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import thunk from 'redux-thunk';
+import $ from 'jquery';
 
 import SearchResults from './searchresults';
 import { fetchWalmartProducts } from "../actions/walmartactions";
@@ -9,6 +10,8 @@ import { fetchBestBuyProducts } from "../actions/bestbuyactions";
 import './searchform.css';
 
 const {API_BASE_URL} = require('../config');
+const walAPI = 'cwd2qzamfg6f523deuwhuxec';
+const YTAPI = 'AIzaSyAkcjnCcHDCNVjZXC28pvI8ur0GMxoAKTY';
 
 class SearchForm extends Component{
   constructor(){
@@ -58,21 +61,45 @@ class SearchForm extends Component{
       -the below api call will return plain HTML code of its index.html
       -because the api call calling its localhost.
     */
+
+    /*
+    Nov/5 comment
+
+    - Fetching does not work for walmart
+    - However, the logic below is correct
+
     let apiUrls = [
-      `${API_BASE_URL}/Walmart/Listings/?searchTerm=macbook`,
-      `${API_BASE_URL}/BestBuy/Listings/?searchTerm=macbook`,
-      `${API_BASE_URL}/Etsy/Listings/?searchTerm=macbook`
+      `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`
+      // `${API_BASE_URL}/BestBuy/Listings/?searchTerm=macbook`,
+      // `${API_BASE_URL}/Etsy/Listings/?searchTerm=macbook`
       ]
     Promise.all(apiUrls.map(url =>
-      fetch(url).then(res => res.json())
+      fetch(url)
+      .then(res => res.json())
     ))
-    //if data.canonical exists...do this if not it's walmart
     .then(data => {
       this.setState({
         result: data
       })
     })
     .catch(err => console.log(err));
+    */
+
+    $.ajax({
+      url: `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`,
+      type: 'GET',
+      dataType: 'jsonp'
+    })
+    .done( res => {
+      console.log(res);
+      this.setState({
+        result: res.items
+      })
+    })
+    .fail( res => {
+      console.log("error", res);
+    });
+    
   };
   render(){
       return (
