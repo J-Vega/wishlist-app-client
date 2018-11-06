@@ -1,39 +1,65 @@
-
 import React from 'react';
 import CategoryDropdown from './categorydropdown';
 import './searchresults.css';
 import WishLists from './wishlist';
 
-export default class SearchResults extends React.Component{
+class SearchResults extends React.Component{
 	constructor(props){
-    super(props);
-    this.state = {
-      saveWishes: []
-    };
-		this.saveWish = this.saveWish.bind(this);
-  }
+      super(props);
+      this.state = {
+        isButton: false,
+        isWish: false,
+        gift: [],
+        grocer: [],
+        events: [],
+        others: []
+      }
+      this.wishRouter = this.wishRouter.bind(this);
+    }
 
-  componentDidmount(){
-  	this.setState({
-  		saveWishes: []
-  	})
-  }
+	wishRouter(e){
+        e.preventDefault();
+        let wishPack = {
+            name: e.target.dataset.name,
+            price: e.target.dataset.price,
+            image: e.target.dataset.image,
+            url: e.target.dataset.url
+        }
 
-  saveWish(e){
-  	e.preventDefault();
+        if(e.target.dataset.wish === "gift")   {
+            this.setState(
+                {gift: this.state.gift.concat(wishPack)},
+                () => {console.log('Gift list now: ', this.state.gift)}
+            );
+        }
 
-  	this.setState({
-  		saveWishes: this.state.saveWishes.concat(
-  			{
-  				name: e.target.dataset.name,
-  				price: e.target.dataset.price,
-  				image: e.target.dataset.image
-  			}
-  		)
-  	})
-  }
+        if(e.target.dataset.wish === "grocer") {
+            this.setState(
+                {grocer: this.state.grocer.concat(wishPack)},
+                () => {console.log('Grocery list now: ', this.state.grocer)}
+            );
+                        
+        }
 
-  render(){
+        if(e.target.dataset.wish === "events") {
+            this.setState(
+                {events: this.state.events.concat(wishPack)},
+                () => {console.log('Events list now: ', this.state.events)}
+            );
+                        
+        }
+
+        if(e.target.dataset.wish === "others") {
+            this.setState(
+                {others: this.state.others.concat(wishPack)},
+                () => {console.log('Others list now: ', this.state.others)}
+            );
+                        
+        }
+
+    }
+
+	render(){
 		return(
 			<div>
 				<div className="tab">
@@ -72,19 +98,12 @@ export default class SearchResults extends React.Component{
 					{ 
 							!this.props.result.length ? '' : 
 							this.props.result.map(i => (
-								<div key={i.url}>
+								<div key={i.itemId}>
 									<div className="name">{i.name}</div>
 									<div className="price">$ {i.salePrice}</div>
 									<img className="image" src={i.mediumImage} alt={i.name}/>
-
-									<button onClick={this.saveWish} 
-										data-name={i.name} 
-										data-price={i.price}
-										data-image={i.mediumImage}
-										>ADD TO WISHLIST</button>
-									<CategoryDropdown />
-
-
+									
+									<CategoryDropdown data={i} clickHandler={this.wishRouter}/>
 									<a className="listing-url" href={i.productUrl}>Buy Now!</a>
 								</div>
 							))
@@ -114,10 +133,11 @@ export default class SearchResults extends React.Component{
 						}
 					</div>
 				</div>
-				<WishLists wishes = {this.state.saveWishes} />
+				{/*<WishLists wishes = {this.state.saveWishes} />*/}
 			</div>
-		);
-  	
-  }
-
+			)
+	}
 }
+			
+
+export default SearchResults;
