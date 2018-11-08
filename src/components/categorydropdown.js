@@ -19,16 +19,19 @@ const CategoryDropdown = (props) => {
                     <div className="buttons">
                         {
                             wishes.map(e => (
+                              <div key={`${e.wish} ${data.itemId}`}>
                                 <button
                                     data-name={data.name} 
-                                    data-price={data.price}
+                                    data-price={data.salePrice}
                                     data-image={data.mediumImage}
                                     data-key={data.itemId}
                                     data-url={data.productUrl}
+                                    data-msrp={data.msrp}
                                     data-wish= {e.wish}
                                     data-text={e.text}
                                     onClick={clickHandler}
                                 >{e.text}</button>
+                                </div>
                             ))
                         } 
                     </div>
