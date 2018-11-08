@@ -18,7 +18,13 @@ class SearchForm extends Component{
     super();
     this.state = {
       inputValue: '',
-      result: []
+      results: [],
+      searchResults: {
+        walmartResults: [],
+        bestbuyResults: [],
+        etsyResults: []
+      }
+      
     };
     this.search = this.search.bind(this);
   }
@@ -79,21 +85,68 @@ class SearchForm extends Component{
     })
     .catch(err => console.log(err));
     */
-
-    $.ajax({
-      url: `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`,
-      type: 'GET',
-      dataType: 'jsonp'
-    })
-    .done( res => {
-      console.log(res);
+    fetch(`${API_BASE_URL}/Walmart/Listings/?searchTerm=${this.state.inputValue}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
       this.setState({
-        result: res.items
+        results: data,
+        searchResults: {
+            ...this.state.searchResults, walmartResults: data
+        }
       })
     })
-    .fail( res => {
-      console.log("error", res);
-    });
+    .catch(err => console.log(err));
+
+    fetch(`${API_BASE_URL}/BestBuy/Listings/?searchTerm=${this.state.inputValue}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      this.setState({
+        results: data,
+        searchResults: {
+            ...this.state.searchResults, bestbuyResults: data
+        }
+      })
+    })
+    .catch(err => console.log(err));
+
+    fetch(`${API_BASE_URL}/Etsy/Listings/?searchTerm=${this.state.inputValue}`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      this.setState({
+        results: data,
+        searchResults: {
+            ...this.state.searchResults, etsyResults: data
+        }
+      })
+    })
+    .catch(err => console.log(err));
+
+
+    
+    // $.ajax({
+    //   url:`${API_BASE_URL}/Walmart/Listings/?searchTerm=xbox`,
+    //   //url: `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`,
+    //   type: 'GET',
+    //   dataType: 'jsonp'
+    // })
+    // .done( res => {
+    //   //console.log(res);
+    //   this.setState({
+    //     results: res.items,
+    //     searchResults: {
+    //         ...this.state.searchResults, walmartResults: res.items
+    //     }
+    //   });
+    //   console.log(this.state.results);
+    //   console.log([...this.state.searchResults["walmartResults"]]);
+    // })
+    // .fail( res => {
+    //   console.log("error", res);
+    // });
+    
     
   };
   render(){
@@ -111,7 +164,8 @@ class SearchForm extends Component{
                   </button>
               </div>
             </form>
-            <SearchResults result = {this.state.result}/>   
+            {/* <SearchResults results = {this.state.results}/>    */}
+            <SearchResults results = {this.state.searchResults}/>   
         </div>
   );
  }
