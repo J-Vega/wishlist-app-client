@@ -4,7 +4,7 @@ import './searchresults.css';
 import WishLists from './wishlist';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import WalmartResults from './walmartresults';
+
 
 import {API_BASE_URL} from '../config';
 
@@ -110,17 +110,14 @@ class SearchResults extends React.Component{
 
 
 		return(
-			<div className="results-container">
+	
 			<Tabs className="tab">
 				<TabList>
 				  <Tab className="tablinks" id="defaultOpen">Walmart</Tab>
 				  <Tab className="tablinks">Best Buy</Tab>
 				  <Tab className="tablinks">Etsy</Tab>
 				</TabList>
-			
-
-				
-				
+	
 				<TabPanel id="Walmart-Tab" className="tabcontent">
 				  <h3 className="results-header">Walmart Results</h3>
 				  <div className='js-search-results-WALMART'>
@@ -129,21 +126,25 @@ class SearchResults extends React.Component{
 						// this.props.results['walmartResults'].map(i => (
 						!this.props.results["walmartResults"].length ? '' : 
 						this.props.results["walmartResults"].map(i => (
-							<div key={i.itemId}>
-								<div className="name">{i.name}</div>
-								<div className="price">$ {i.salePrice}</div>
-								<img className="image" src={i.mediumImage} alt={i.name}/>
-								
-								<CategoryDropdown data={i} clickHandler={this.wishRouter}/>
-								<a className="listing-url" href={i.productUrl}>Buy Now!</a>
+							
+							<div className="item-container" key={i.itemId}>
+								<div className="image-container">
+									<img className="image" src={i.mediumImage} alt={i.name}/>
+								</div>
+								<div className="product-info-container">
+									<p className="name">{i.name}</p>
+									<div className="price">$ {i.salePrice}</div>
+
+									<CategoryDropdown data={i} clickHandler={this.wishRouter}/>
+
+									<button className="listing-url" href={i.productUrl}>Buy Now!</button>
+								</div>				
 							</div>
 						))
 					}
 					
 					</div>
-				</TabPanel>
-
-				<TabPanel id="BestBuy-Tab" className="tabcontent">
+				</TabPanel><TabPanel id="BestBuy-Tab" className="tabcontent">
 				  <h3 className="results-header">Best Buy Results</h3>
 				  <div className='js-search-results-BESTBUY'>
 						{ 
@@ -164,10 +165,7 @@ class SearchResults extends React.Component{
 							))
 						}
 					</div>
-				</TabPanel>
-
-
-				<TabPanel id="Etsy-Tab" className="tabcontent">
+				</TabPanel><TabPanel id="Etsy-Tab" className="tabcontent">
 				  <h3 className="results-header">Etsy Results</h3>
 				  <div className='js-search-results-ETSY'>
 					{ 
@@ -186,9 +184,9 @@ class SearchResults extends React.Component{
 						}
 					</div>
 				</TabPanel>
-				{/*<WishLists wishes = {this.state.saveWishes} />*/}
+				<WishLists wishes = {this.state.gift} />
 				</Tabs>
-			</div>
+		
 			)
 	}
 }

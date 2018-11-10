@@ -6,8 +6,9 @@ import './App.css';
 
 import Header from './header';
 import SearchForm from './searchform';
-import SearchResults from './searchresults';
+
 import RegistrationPage from './registration-page';
+import WishList from './wishlist';
 import {refreshAuthToken} from '../actions/auth';
 
 
@@ -48,6 +49,7 @@ export class App extends React.Component {
           <Header />
           <SearchForm />
           <Route exact path="/register" component={RegistrationPage} />
+          {/* <Route exact path="/wishlist" component={WishList} /> */}
         </header>
       </div>
     );

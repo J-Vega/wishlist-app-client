@@ -13,6 +13,7 @@ export default function WishList({wishes}) {
 					{
 						wishes.map(i => (
 							<div>
+								<div className="category">{i.text}</div>
 								<div className="name">{i.name}</div>
 								<div className="price">$ {i.salePrice}</div>
 								<img className="image" src={i.image} alt={i.name}/>

@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import thunk from 'redux-thunk';
-import $ from 'jquery';
+
 
 import SearchResults from './searchresults';
-import { fetchWalmartProducts } from "../actions/walmartactions";
-import { fetchEtsyProducts } from "../actions/etsyactions";
-import { fetchBestBuyProducts } from "../actions/bestbuyactions";
+
 import './searchform.css';
 
 const {API_BASE_URL} = require('../config');
-const walAPI = 'cwd2qzamfg6f523deuwhuxec';
-const YTAPI = 'AIzaSyAkcjnCcHDCNVjZXC28pvI8ur0GMxoAKTY';
+
 
 class SearchForm extends Component{
   constructor(){
