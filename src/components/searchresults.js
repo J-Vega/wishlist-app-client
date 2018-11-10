@@ -113,9 +113,13 @@ class SearchResults extends React.Component{
 	
 			<Tabs className="tab">
 				<TabList>
+				
+					
+				
 				  <Tab className="tablinks" id="defaultOpen">Walmart</Tab>
 				  <Tab className="tablinks">Best Buy</Tab>
 				  <Tab className="tablinks">Etsy</Tab>
+				  <Tab className="tablinks">My Wishlist</Tab>
 				</TabList>
 	
 				<TabPanel id="Walmart-Tab" className="tabcontent">
@@ -184,7 +188,10 @@ class SearchResults extends React.Component{
 						}
 					</div>
 				</TabPanel>
-				<WishLists wishes = {this.state.gift} />
+				<TabPanel>
+					<WishLists wishes = {this.state.gift} />
+				</TabPanel>
+				
 				</Tabs>
 		
 			)

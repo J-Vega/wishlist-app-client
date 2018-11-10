@@ -1,5 +1,38 @@
+div{
+    text-overflow: ellipsis;
+}
+.tab{
+    max-width: 800px;
+    margin: auto;
+}
+
+.tablinks{
+    float: left;
+    width: 24.7%;
+    border: 1px solid black;
+}
+
 .results-container{
     background-color: white;
+}
+
+.item-container{
+    height: 120px;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px; 
+    margin: 5px;
+}
+
+.image-container{
+    float: left;
+    width: 20%;
+}
+
+.product-info-container{
+    float: left;
+    width: 75%;
 }
 
 .results-header{
@@ -8,13 +41,30 @@
 }
 
 .name{
-    color:black;
+    font-size: 24px;
+    text-decoration: none; 
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    white-space: nowrap;
+
+    color:#0b7ee4;    
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
 }
 
 .image{
-    width:160px;
-    height: 140px;
+    width:120px;
+   
+}
+
+.price{
+    padding: 12px;
+    font-size: 20px;
+    float: left;
+    color: rgb(0, 102, 5);
+    font-weight: bolder;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+
 }
 
 /* "Buy Now" */
