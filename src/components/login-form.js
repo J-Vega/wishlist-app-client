@@ -6,7 +6,7 @@ import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
 import {Link, Redirect} from 'react-router-dom';
 
-import './top-nav.css';
+import './login-form.css';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -28,7 +28,7 @@ export class LoginForm extends React.Component {
         }
         return (
 
-        <div className="col-4 topnav full-row">
+        <div className="login-container">
             <form
                 className="js-signin-form"
                 onSubmit={this.props.handleSubmit(values =>

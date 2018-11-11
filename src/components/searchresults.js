@@ -88,14 +88,14 @@ class SearchResults extends React.Component{
 			console.log("MSRP is undefined as well! Set price to N/A");
 			itemPrice="N/A";
 		}
-		if(itemData.price)
-		fetch(`${API_BASE_URL}/WishList/User/${window.localStorage.userName}/${category}`, {
+		
+		fetch(`${API_BASE_URL}/Wishlist/User/${window.localStorage.userName}/${category}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-				"id":"5bc91e143d799d3ae4f0ce41",
+				
 				"category":category,
 				"name":`${itemData.name}`,
 				"price":`${itemData.price}`,
