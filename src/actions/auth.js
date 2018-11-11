@@ -1,10 +1,10 @@
 
 import jwtDecode from 'jwt-decode';
-import {SubmissionError} from 'redux-form';
+import { SubmissionError } from 'redux-form';
 
-import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
+import { saveAuthToken, clearAuthToken } from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -55,19 +55,26 @@ export const login = (username, password) => dispatch => {
             body: JSON.stringify({
                 username,
                 password
-            }) 
+            })
         })
             // Reject any requests which don't return a 200 status, creating
             // errors which follow a consistent format
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
-            .then(({authToken}) => {
+            .then(({ authToken }) => {
                 console.log("Logged in! Storing username and auth token");
                 storeAuthInfo(authToken, dispatch);
-                localStorage.setItem('userName', username); 
+                localStorage.setItem('userName', username);
+                fetch(`${API_BASE_URL}/Wishlist/User/${username}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("Found user wishlist");
+                        console.log(data);
+                    })
             })
+
             .catch(err => {
-                const {code} = err;
+                const { code } = err;
                 const message =
                     code === 401
                         ? 'Incorrect username or password'
@@ -96,7 +103,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+        .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
         .catch(err => {
             // We couldn't get a refresh token because our current credentials
             // are invalid or expired, or something else went wrong, so clear
