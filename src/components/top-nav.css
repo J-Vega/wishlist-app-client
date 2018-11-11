@@ -33,7 +33,13 @@ span{
 /* Style the tab content */
 
 
-
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    width:120px;
+  }
 
 
 /*DROP DOWN MENU FOR PRODUCT LISTINGS*/
@@ -83,7 +89,7 @@ main{
     margin-top: 180px;
 }
 
-/*NAV BAR AND SIGN IN / REGISTER LINKS*/
+NAV BAR AND SIGN IN / REGISTER LINKS
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;

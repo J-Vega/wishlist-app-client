@@ -4,7 +4,7 @@ import {Route, withRouter} from 'react-router-dom';
 
 import './App.css';
 
-import Header from './header';
+import TopNav from './top-nav';
 import SearchForm from './searchform';
 
 import RegistrationPage from './registration-page';
@@ -46,7 +46,7 @@ export class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header />
+          <TopNav />
           <SearchForm />
           <Route exact path="/register" component={RegistrationPage} />
           {/* <Route exact path="/wishlist" component={WishList} /> */}
