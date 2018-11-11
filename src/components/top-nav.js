@@ -27,11 +27,15 @@ export class TopNav extends React.Component {
 			      -- It is recommened to use Regex if else
 			      --(added a logout button)
 					*/}
-
+					{
+						this.props.loggedIn ? <p>{window.localStorage.userName}</p> : <p>Welcome, Guest!</p>
+					}
 
 					{
+						
 						this.props.loggedIn ? <button onClick={() => this.logOut()}>Log out</button> : <LogInForm/>
 					}
+
 				</div>
 			</nav>
 		)
