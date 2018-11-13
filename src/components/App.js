@@ -46,7 +46,7 @@ export class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <TopNav />
+          {/* <TopNav /> */}
           <InfoSection />
           <SearchForm />
           <Route exact path="/register" component={RegistrationPage} />
