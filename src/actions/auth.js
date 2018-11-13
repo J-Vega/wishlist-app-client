@@ -47,7 +47,7 @@ export const login = (username, password) => dispatch => {
     console.log("logging in....");
     dispatch(authRequest());
     return (
-        fetch(`${API_BASE_URL}/auth/login`, {
+        fetch(`${API_BASE_URL}auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ export const login = (username, password) => dispatch => {
                 console.log("Logged in! Storing username and auth token");
                 storeAuthInfo(authToken, dispatch);
                 localStorage.setItem('userName', username);
-                fetch(`${API_BASE_URL}/Wishlist/User/${username}`)
+                fetch(`${API_BASE_URL}Wishlist/User/${username}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log("Found user wishlist");
@@ -94,7 +94,7 @@ export const login = (username, password) => dispatch => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/auth/refresh`, {
+    return fetch(`${API_BASE_URL}auth/refresh`, {
         method: 'POST',
         headers: {
             // Provide our existing token as credentials to get a new one
