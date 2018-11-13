@@ -14,13 +14,14 @@ const CategoryDropdown = (props) => {
                 { wish:"others", text:"Other "}
             ];
         return (
-            <div>
-                <div className="category-dropdown-container">
+       
+                <div className="category-container">
+                    <p className="category-notification">Choose wishlist category:</p>
                     <div className="buttons">
                         {
                             wishes.map(e => (
                               <div key={`${e.wish} ${data.itemId}`}>
-                                <button
+                                <button className="category-buttons"
                                     data-name={data.name} 
                                     data-price={data.salePrice}
                                     data-image={data.mediumImage}
@@ -36,7 +37,7 @@ const CategoryDropdown = (props) => {
                         } 
                     </div>
                 </div>
-            </div>
+
         );
     }
 
