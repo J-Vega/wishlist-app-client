@@ -41,14 +41,15 @@ div{
 }
 
 .name{
-    font-size: 24px;
+    font-size: 20px;
     text-decoration: none; 
     text-overflow: ellipsis; 
     display: block; 
     overflow: hidden; 
     white-space: nowrap;
 
-    color:#0b7ee4;    
+    /* color:#0b7ee4;     */
+    color: #2d3c44;
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
 }
 

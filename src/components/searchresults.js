@@ -138,10 +138,11 @@ class SearchResults extends React.Component{
 								<div className="product-info-container">
 									<p className="name">{i.name}</p>
 									<div className="price">$ {i.salePrice}</div>
-
+									<button className="listing-url" href={i.productUrl}>Buy Now!</button>
+									
 									<CategoryDropdown data={i} clickHandler={this.wishRouter}/>
 
-									<button className="listing-url" href={i.productUrl}>Buy Now!</button>
+									
 								</div>				
 							</div>
 						))
@@ -154,18 +155,28 @@ class SearchResults extends React.Component{
 						{ 
 							!this.props.results["bestbuyResults"].length ? '' : 
 							this.props.results["bestbuyResults"].map(e => (
-								<div key={e.url}>
+								<div className="item-container" key={e.url}>
+									
+									<div className="image-container">
+										<img className="image" src={e.image} alt={e.name}/>
+									</div>
+									<div className="product-info-container">
 									<a className="name" href={e.url}>{e.name}</a>
 									<div className="price">$ {e.regularPrice}</div>
-									<img className="image" src={e.image} alt={e.name}/>
 
-									{/* CALL ACTION ON CLICK, THIS SHOULD ONLY DISPLAY WHEN LOGGED IN */}
-									<button>ADD TO WISHLIST</button>
 									<CategoryDropdown data={e} clickHandler={this.wishRouter}/>
+									<button className="listing-url" href={e.url}>Buy Now!</button>
+									</div>
+									
 
-									<a href={e.url}>Buy Now!</a>
+									
+									
+									
 
+									
 								</div>
+
+								
 							))
 						}
 					</div>
@@ -178,7 +189,7 @@ class SearchResults extends React.Component{
 								<div key={e.url}>
 									<div className="listing-name">{e.title}</div>
 									<div className="listing-price">$ {e.regularPrice}</div>
-									<button>ADD TO WISHLIST</button>
+									
 									<CategoryDropdown data={e} clickHandler={this.wishRouter}/>
 
 
