@@ -1,0 +1,23 @@
+
+.info-container .description{
+    text-align: left;
+}
+.info-header, .description{
+    font-family: geomanist, Helvetica, Arial;
+}
+
+.info-header{
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.description{
+    text-indent: left;
+    font-size: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+}
