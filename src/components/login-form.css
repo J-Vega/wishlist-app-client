@@ -17,3 +17,9 @@
 .login-container button:hover {
     background-color: green;
   }
+
+.js-signin-form{
+    width: 40%;
+    float: left;
+    display: inline-flex;
+}
