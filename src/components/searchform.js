@@ -147,7 +147,7 @@ class SearchForm extends Component{
   };
   render(){
       return (
-        <div className="row">
+        <div className="row main-body">
             {/* <form className="js-search-form" onSubmit={this.handleSubmit}> */}
             <form className="js-search-form" onSubmit={e => this.search(e)}>
               <div className ="col-1 search-container"></div>
