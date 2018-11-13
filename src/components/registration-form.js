@@ -6,6 +6,7 @@ import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('password');
+ 
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
