@@ -4,16 +4,16 @@ import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
-        const {username, password, firstName, lastName} = values;
-        const user = {username, password, firstName, lastName};
+        const {email, userName, password, firstName, lastName} = values;
+        const user = {email, userName, password, firstName, lastName};
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .then(() => this.props.dispatch(login(userName, password)));
     }
 
     render() {
@@ -38,7 +38,7 @@ export class RegistrationForm extends React.Component {
                 <Field
                     component={Input}
                     type="text"
-                    name="username"
+                    name="userName"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <label htmlFor="password">Password</label>
