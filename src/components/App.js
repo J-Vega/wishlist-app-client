@@ -6,7 +6,7 @@ import './App.css';
 
 import TopNav from './top-nav';
 import SearchForm from './searchform';
-
+import InfoSection from './info-section';
 import RegistrationPage from './registration-page';
 import WishList from './wishlist';
 import {refreshAuthToken} from '../actions/auth';
@@ -47,6 +47,7 @@ export class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <TopNav />
+          <InfoSection />
           <SearchForm />
           <Route exact path="/register" component={RegistrationPage} />
           {/* <Route exact path="/wishlist" component={WishList} /> */}
