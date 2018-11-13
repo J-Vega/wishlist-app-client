@@ -9,16 +9,7 @@ span{
     border: 1px solid #ccc;
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
+
 
 /* Change background color of buttons on hover */
 .tab button:hover {
@@ -32,14 +23,14 @@ span{
 
 /* Style the tab content */
 
-
+/* 
 .topnav input[type=text] {
-    padding: 6px;
-    margin-top: 8px;
-    font-size: 17px;
-    border: none;
-    width:120px;
-  }
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width:120px;
+} */
 
 
 /*DROP DOWN MENU FOR PRODUCT LISTINGS*/
@@ -89,12 +80,10 @@ main{
     margin-top: 180px;
 }
 
-NAV BAR AND SIGN IN / REGISTER LINKS
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
+.user-greeting{
+    float: left;
+    width: 20%;
 }
-
 .topnav a {
   float: left;
   display: block;
@@ -119,13 +108,13 @@ NAV BAR AND SIGN IN / REGISTER LINKS
   float: right;
 }
 
-.topnav input[type=text] {
+/* .topnav input[type=text] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
   width:120px;
-}
+} */
 
 .signInButton, .signUpButton {
   float: right;
@@ -142,10 +131,10 @@ NAV BAR AND SIGN IN / REGISTER LINKS
 .topnav .login-container button:hover, .signUpButton:hover {
   background-color: green;
 }
-
+ 
 nav{
     align-items: center;
-    /* position: fixed; */
+    height: 60px;
     width:100%;
     top: 0;
     right: 0;
@@ -154,11 +143,11 @@ nav{
     background: grey;
     box-sizing: border-box;
 }
-.nav-signin{
+/* .nav-signin{
     position: relative;
     top: 20px;
-}
-.navTitle{
+} */
+/* .navTitle{
     float: left;
     margin-left: 5%;
 }
@@ -179,32 +168,18 @@ nav{
 .js-phone-number{
     font-weight: bold;  
     font-size: 18px;
-}
+} */
 
-.register-link{
-    color: blue;
-    text-shadow: none;
-}
 
-.register-link:hover,.signup-link:hover,.signin-link:hover{
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.register-title{
-    color: black;
-}
-
-.login-signup-container p{
+/* .login-signup-container p{
     display: inline-block;
 }
 
 .login-signup-container{
     float: right !important;
-}
+} */
 
-.cancel-signup{
+/* .cancel-signup{
     display: block;
     margin-left: 12px;
     padding: 10px 18px;
@@ -237,45 +212,5 @@ nav{
     margin-top: 15px;
     background-color: grey;
 }
+ */
 
-.js-signup-popup-window{
-  background-color: #f3f3f3;
-  z-index: 20;
-  height: 60%;
-  width: 90%;
-  max-width: 450px;
-  overflow: auto;
-  margin: auto;
-  position: fixed;
-  top: 0; left: 0; bottom: 0; right: 0;
-  border: 1px solid grey;
-}
-
-.js-signin-popup-window{
-  background-color: #f3f3f3;
-  z-index: 20;
-  height: 33%;
-  width: 90%;
-  max-width: 450px;
-  overflow: auto;
-  margin: auto;
-  position: fixed;
-  top: 0; left: 0; bottom: 0; right: 0;
-  border: 1px solid grey;
-}
-
-/* The close button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: -21px;
-    color: #000;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}

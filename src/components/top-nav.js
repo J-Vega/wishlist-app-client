@@ -17,7 +17,7 @@ export class TopNav extends React.Component {
 
 		return(
 			<nav>
-				<div className ="col-4 topnav full-row">
+				<div className ="col-4 topnav">
 					<a href={"/"} className="active">UniCart</a>
 
 
@@ -28,7 +28,7 @@ export class TopNav extends React.Component {
 			      --(added a logout button)
 					*/}
 					{
-						this.props.loggedIn ? <p>{window.localStorage.userName}</p> : <p>Welcome, Guest!</p>
+						this.props.loggedIn ? <p className="user-greeting">Welcome, {window.localStorage.userName}!</p> : <p className="user-greeting">Welcome, Guest!</p>
 					}
 
 					{
