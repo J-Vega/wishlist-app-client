@@ -72,6 +72,7 @@ export const login = (username, password) => dispatch => {
                     .then(data => {
                         console.log("Found user wishlist");
                         console.log(data);
+                        
                     })
             })
 
