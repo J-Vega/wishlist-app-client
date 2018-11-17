@@ -1,15 +1,27 @@
+html{
+    background-color: black;
+}
+
+
 div{
     text-overflow: ellipsis;
 }
 .tab{
     max-width: 800px;
     margin: auto;
+    margin-bottom: 10px;
 }
 
 .tablinks{
     float: left;
-    width: 24.7%;
-    border: 1px solid black;
+    width: 25%;
+    background-color: rgba(117, 117, 117, 0.452);
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+}
+
+.tablinks:hover{
+    cursor: pointer;
+    background-color: rgb(35, 43, 53);
 }
 
 .results-container{
@@ -36,8 +48,10 @@ div{
 }
 
 .results-header{
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
     margin: 20px;
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 .name{
@@ -56,6 +70,11 @@ div{
 .image{
     max-width:100px;
    
+}
+
+.tabcontent{
+    margin-top: 50px;
+    margin-bottom: -25px;
 }
 
 .price{
@@ -80,9 +99,9 @@ div{
   }
   
   .react-tabs__tab-list {
-    border-bottom: 1px solid #aaa;
+    /* border-bottom: 1px solid #aaa; */
     margin: 0 0 10px;
-    padding: 0;
+    padding: 5px;
   }
   
   .react-tabs__tab {
@@ -97,10 +116,10 @@ div{
   }
   
   .react-tabs__tab--selected {
-    background: rgb(0, 255, 242);
+    background: #f6eb99;
     border-color: #aaa;
     color: black;
-    border-radius: 5px 5px 0 0;
+    border-radius: 10px 10px 0 0;
   }
   
   .react-tabs__tab--disabled {
@@ -131,3 +150,4 @@ div{
   .react-tabs__tab-panel--selected {
     display: block;
   }
+

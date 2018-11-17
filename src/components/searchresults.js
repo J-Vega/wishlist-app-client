@@ -18,7 +18,7 @@ class SearchResults extends React.Component{
         gift: [],
         grocer: [],
         events: [],
-        others: []
+		others: []
       }
       this.wishRouter = this.wishRouter.bind(this);
 	}
@@ -105,16 +105,23 @@ class SearchResults extends React.Component{
         })
 	}
 
+	findImage(itemId){
+		fetch(`${API_BASE_URL}/Etsy/Listing/Images/?listingId=${itemId}`)
+			.then(results => {
+				return results.json();
+			})
+			.then(data => {
+				//update state
+				this.setState({img:data.results[0].url_170x135});
+				console.log(data.results[0].url_170x135); 
+			})
+	}
+
 	render(){
-
-
-
 		return(
-	
+			
 			<Tabs className="tab">
 				<TabList>
-				
-					
 				
 				  <Tab className="tablinks" id="defaultOpen">Walmart</Tab>
 				  <Tab className="tablinks">Best Buy</Tab>
@@ -166,14 +173,7 @@ class SearchResults extends React.Component{
 
 									<CategoryDropdown data={e} clickHandler={this.wishRouter}/>
 									<button className="listing-url" href={e.url}>Buy Now!</button>
-									</div>
-									
-
-									
-									
-									
-
-									
+									</div>						
 								</div>
 
 								
@@ -186,14 +186,18 @@ class SearchResults extends React.Component{
 					{ 
 							!this.props.results["etsyResults"].length ? '' : 
 							this.props.results["etsyResults"].map(e => (
-								<div key={e.url}>
-									<div className="listing-name">{e.title}</div>
-									<div className="listing-price">$ {e.regularPrice}</div>
+								<div className="item-container" key={e.name + e.url}>
+								<div className="image-container">
+									{/* <div>{this.findImage(e.listing_id)}</div> */}
+										<img className="image" src={this.state.img} alt={e.name}/>
+									</div>
+								<div className="product-info-container">
+									<div className="name">{e.title}</div>
+									<div className="price">$ {e.regularPrice}</div>
 									
 									<CategoryDropdown data={e} clickHandler={this.wishRouter}/>
-
-
 									<a className="listing-url" href={e.url}>Buy Now!</a>
+								</div>
 								</div>
 							))
 						}
@@ -204,7 +208,7 @@ class SearchResults extends React.Component{
 				</TabPanel>
 				
 				</Tabs>
-		
+	
 			)
 	}
 }
