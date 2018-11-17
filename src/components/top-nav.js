@@ -17,24 +17,16 @@ export class TopNav extends React.Component {
 
 		return(
 			<nav>
-				<div className ="col-4 topnav">
+				<div className ="row topnav">
 					<a href={"/"} className="active">UniCart</a>
-
-
-					{/*
-						Nov/4 comment
-			      - To have conditional appearing module:
-			      -- It is recommened to use Regex if else
-			      --(added a logout button)
-					*/}
+					{
+						this.props.loggedIn ? <button className="logout-button" onClick={() => this.logOut()}>Log out</button> : <LogInForm/>
+					}
 					{
 						this.props.loggedIn ? <p className="user-greeting">Welcome, {window.localStorage.userName}!</p> : <p className="user-greeting">Welcome, Guest!</p>
 					}
 
-					{
-						
-						this.props.loggedIn ? <button onClick={() => this.logOut()}>Log out</button> : <LogInForm/>
-					}
+					
 
 				</div>
 			</nav>

@@ -2,7 +2,16 @@ span{
   display: inline-block;
 }
 
-
+.active{
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    color: #132e3c;
+    font-weight: bold;
+    float: left;
+    margin-top: 14px;
+    margin-left: 30px;
+}
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -21,19 +30,7 @@ span{
     background-color: #ccc;
 }
 
-/* Style the tab content */
 
-/* 
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-  width:120px;
-} */
-
-
-/*DROP DOWN MENU FOR PRODUCT LISTINGS*/
 
 .dropbtn {
     background-color: #4CAF50;
@@ -81,25 +78,36 @@ main{
 }
 
 .user-greeting{
-    float: left;
-    width: 20%;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    float: right;
+    margin-top: 12px;
+    margin-right: 20px;
+    font-weight: bold;
+    color: #132e3c;
 }
-.topnav a {
+
+.logout-button{
+    float: right;
+    margin-top: 18px;
+    margin-right: 20px;
+}
+
+.logo{
   float: left;
   display: block;
-  color: black;
+  color: #132e3c;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
-.topnav a:hover {
+.logo:hover {
   background-color: #ddd;
   color: black;
 }
 
-.topnav a.active {
+.logo {
   background-color: #2196F3;
   color: white;
 }
@@ -140,7 +148,7 @@ nav{
     right: 0;
     left: 0;
     z-index: 500;
-    background: grey;
+    background: #f7ec9a;
     box-sizing: border-box;
 }
 /* .nav-signin{
