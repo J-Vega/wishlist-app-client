@@ -18,7 +18,8 @@ class SearchForm extends Component{
       searchResults: {
         walmartResults: [],
         bestbuyResults: [],
-        etsyResults: []
+        etsyResults: [],
+        img: []
       }
       
     };
@@ -111,6 +112,10 @@ class SearchForm extends Component{
     .then(res => res.json())
     .then(data => {
       console.log(data);
+      //this.findImage(data.listing_id);
+      data.forEach(data => {
+        this.findImage(data.listing_id);
+      });
       this.setState({
         results: data,
         searchResults: {
@@ -145,6 +150,19 @@ class SearchForm extends Component{
     
     
   };
+
+  findImage(itemId){
+		fetch(`${API_BASE_URL}/Etsy/Listing/Images/?listingId=${itemId}`)
+			.then(results => {
+				return results.json();
+			})
+			.then(data => {
+        console.log(data);
+				//update state
+        console.log(data.results[0].url_170x135); 
+			})
+  };
+  
   render(){
       return (
         <div className="row main-body">
@@ -161,7 +179,7 @@ class SearchForm extends Component{
               </div>
             </form>
             {/* <SearchResults results = {this.state.results}/>    */}
-            <SearchResults results = {this.state.searchResults}/>   
+            <SearchResults className="search-results" results = {this.state.searchResults}/>   
         </div>
   );
  }
