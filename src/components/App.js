@@ -9,6 +9,7 @@ import SearchForm from './searchform';
 import InfoSection from './info-section';
 import RegistrationPage from './registration-page';
 import WishList from './wishlist';
+import Footer from './footer';
 import {refreshAuthToken} from '../actions/auth';
 
 
@@ -51,6 +52,7 @@ export class App extends React.Component {
           <Route exact path="/" component={SearchForm}/>
           <Route exact path="/register" component={RegistrationPage} />
           {/* <Route exact path="/wishlist" component={WishList} /> */}
+          <Footer/>
         </header>
       </div>
     );
