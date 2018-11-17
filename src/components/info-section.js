@@ -7,8 +7,10 @@ export default function InfoSection(props) {
     <div className="info-container">
         <p className="info-header">
             UNICART 
-            <br/>The only stop you need to browse and shop!
         </p>
+        <p className="info-sub-header">The only stop you need to browse and shop!</p>
+        <img src={'logo.jpg'} className="main-image"/>
+
         <p className="info-header">
             
         </p>
