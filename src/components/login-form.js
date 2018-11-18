@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import Input from './input';
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+// import {Link, Redirect} from 'react-router-dom';
 
 import './login-form.css';
 
@@ -22,7 +23,7 @@ export class LoginForm extends React.Component {
         if (this.props.error) {
             error = (
                 <div className="form-error" aria-live="polite">
-                    {this.props.error}
+                    {window.alert("Incorrect Username or Password")}
                 </div>
             );
         }
@@ -41,7 +42,7 @@ export class LoginForm extends React.Component {
                     type="text"
                     name="username"
                     id="username"
-                    validate={[required, nonEmpty]}
+                    
                 />
                 <label htmlFor="password">Password</label>
                 <Field
@@ -49,7 +50,7 @@ export class LoginForm extends React.Component {
                     type="password"
                     name="password"
                     id="password"
-                    validate={[required, nonEmpty]}
+                    
                 />
                 <button className="signInButton signup-link" disabled={this.props.pristine || this.props.submitting}>
                     Log in
