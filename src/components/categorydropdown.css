@@ -4,8 +4,18 @@
 }
 
 .category-notification{
-    font-size: 16px;
-    color: #4c4c4c;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #122e3d;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    white-space: nowrap;
+
+    /* color:#0b7ee4;     */
+    color: #2d3c44;
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
 }
 
@@ -31,11 +41,12 @@
 /* Style the buttons that are used to open the tab content */
 .category-buttons{
     background-color: inherit;
-    float: left;
-    border: none;
+    
+    border: 2px solid #132e3c;
+    border-radius: 5px;
     outline: none;
     cursor: pointer;
-    padding: 12px 14px;
+    
     transition: 0.3s;
 }
 
@@ -53,4 +64,23 @@
 .close:focus {
     color: red;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .category-buttons{
+    float: left;
+        width: 49%;
+        margin-left: 1%;
+        padding: 8px 8px;
+        margin-top: 2px;
+    }
+}
+
+@media only screen and (min-width: 701px) {
+    .category-buttons{
+float: left;
+    width: 23%;
+    margin-left: 2%;
+    padding: 12px 14px;
+}
 }

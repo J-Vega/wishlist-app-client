@@ -13,8 +13,6 @@ div{
 }
 
 .tablinks{
-    float: left;
-    width: 25%;
     background-color: rgba(117, 117, 117, 0.452);
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
 }
@@ -72,15 +70,11 @@ div{
    
 }
 
-.tabcontent{
-    margin-top: 50px;
-    margin-bottom: -25px;
-}
-
 .price{
     padding: 12px;
     font-size: 20px;
     float: left;
+    margin-left: 20%;
     color: rgb(0, 102, 5);
     font-weight: bolder;
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
@@ -89,7 +83,12 @@ div{
 
 /* "Buy Now" */
 .listing-url{
-    color:blue;
+    padding: 5px;
+    font-size: 16px;
+    float: left;
+    margin-left: 20%;
+    margin-top: 6px;
+    color:rgb(35, 43, 53);
     font-weight: bold;
     font-family: Human BBY Web,Arial,Helvetica,sans-serif;
 }
@@ -148,6 +147,46 @@ div{
   }
   
   .react-tabs__tab-panel--selected {
+    margin-top: 70px;
     display: block;
   }
+
+  @media only screen and (max-width: 600px) {
+
+    .tablinks{
+        font-size: 30px;
+        width: 100%;
+        border: 1px solid #f6eb99;
+        float: left;
+        
+        margin-top: 5px;
+    }
+
+    .results-header{
+        margin-top: 190px;
+    }
+} 
+
+@media only screen and (min-width: 601px) {
+
+    .tablinks{
+        width: 49%;
+        border: 1px solid #f6eb99;
+        float: left;
+        margin-left: 0.5%;
+        margin-top: 2px;
+    }
+} 
+
+@media only screen and (min-width: 701px) {
+
+    .tablinks{
+       
+        border: 1px solid #f6eb99;
+        float: left;
+        width: 24%;
+        margin-left: 0.5%;
+        margin-top: 2px;
+    }
+} 
 

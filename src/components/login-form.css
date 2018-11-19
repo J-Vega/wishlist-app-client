@@ -1,9 +1,9 @@
 .login-container{
-    float: right;
+   margin-top: 8px;
 }
 
 .login-container button{
-    float: right;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
@@ -14,12 +14,31 @@
   cursor: pointer;
 }
 
+.js-signin-form Label{
+    
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    
+}
+
 .login-container button:hover {
     background-color: green;
   }
 
 .js-signin-form{
-    width: 40%;
-    float: left;
-    display: inline-flex;
+    float: right;
+    
+}
+
+.register-button{
+    float: none !important;
+    font-size: 24px !important;
+    margin: auto !important;
+    background: none !important;
+}
+
+.register-button:hover{
+    text-decoration: underline !important;
 }
