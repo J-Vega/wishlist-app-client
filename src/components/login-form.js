@@ -3,11 +3,11 @@ import {Field, reduxForm, focus} from 'redux-form';
 import {connect} from 'react-redux';
 import Input from './input';
 import {login} from '../actions/auth';
-import {required, nonEmpty} from '../validators';
+
 import {Redirect} from 'react-router-dom';
-// import {Link, Redirect} from 'react-router-dom';
 
 import './login-form.css';
+import NavLink from 'react-router-dom/NavLink';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -28,7 +28,7 @@ export class LoginForm extends React.Component {
             );
         }
         return (
-
+            <div>
        
             <form className="login-container"
                 className="js-signin-form"
@@ -55,16 +55,15 @@ export class LoginForm extends React.Component {
                 <button className="signInButton signup-link" disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
-            </form>
 
+                <NavLink to="/register" className="register-button">Register</NavLink>
+            </form>
+            
+            </div>
         );
     }
 }
 
-/*
-Nov/4 comment
-  - Need to mapStateToProp to send dynamic state to global
-*/
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
