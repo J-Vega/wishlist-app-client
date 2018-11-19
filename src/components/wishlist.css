@@ -1,0 +1,76 @@
+.user-wishlist h3{
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.category{
+    clear: left;
+    color: #122e3d;
+    background-color: #f6ec94;
+    padding: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+}
+
+.wishlist-item-container{
+    float: left;
+    width: 30%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px; 
+}
+.wishlist-name{
+    font-size: 20px;
+    text-decoration: none; 
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    white-space: nowrap;
+    margin-left: 12px;
+    margin-top: 4px;
+    color: #2d3c44;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+}
+
+.wishlist-price{
+    padding: 12px;
+    font-size: 20px;
+    float: right;
+    margin-right: 10%;
+    color: rgb(0, 102, 5);
+    font-weight: bolder;
+    max-width: 75px;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+}
+
+.wishlist-image{
+    width:75px;
+    float: left;
+    margin-top: 10%;
+    margin-left: 10%;
+    
+}
+
+.wishlist-listing-url{
+    padding: 5px;
+    font-size: 16px;
+    float: right;
+    margin-right: 10%;
+    margin-top: 6px;
+    color:rgb(35, 43, 53);
+    font-weight: bold;
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;   
+}
+
+.user-wishlist button:hover{
+    background-color: #ef430e;
+}

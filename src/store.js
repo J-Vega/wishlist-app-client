@@ -14,7 +14,7 @@ const store = createStore(
         form: formReducer,
         auth: authReducer,
         protectedData: protectedDataReducer,
-        wishlistReducer: wishListReducer
+        wishlist: wishListReducer
         // SET REDUCERS HERE
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),

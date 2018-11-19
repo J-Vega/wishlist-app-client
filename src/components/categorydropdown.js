@@ -8,10 +8,10 @@ const CategoryDropdown = (props) => {
         const data = props.data;
         const clickHandler = props.clickHandler
         const wishes = [
-                { wish:"gift", text:"Presents" },
-                { wish:"grocer", text:"Groceries" },
-                { wish:"events", text:"Events" },
-                { wish:"others", text:"Other "}
+                { wish:"Presents", text:"Presents" },
+                { wish:"Groceries", text:"Groceries" },
+                { wish:"Event", text:"Event" },
+                { wish:"Other", text:"Other"}
             ];
         return (
        

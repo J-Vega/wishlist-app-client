@@ -97,31 +97,7 @@ class SearchForm extends Component{
       })
     })
     .catch(err => console.log(err));
-
-
-    
-    // $.ajax({
-    //   url:`${API_BASE_URL}/Walmart/Listings/?searchTerm=xbox`,
-    //   //url: `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`,
-    //   type: 'GET',
-    //   dataType: 'jsonp'
-    // })
-    // .done( res => {
-    //   //console.log(res);
-    //   this.setState({
-    //     results: res.items,
-    //     searchResults: {
-    //         ...this.state.searchResults, walmartResults: res.items
-    //     }
-    //   });
-    //   console.log(this.state.results);
-    //   console.log([...this.state.searchResults["walmartResults"]]);
-    // })
-    // .fail( res => {
-    //   console.log("error", res);
-    // });
-    
-    
+  
   };
 
   findImage(itemId){

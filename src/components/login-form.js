@@ -11,7 +11,6 @@ import NavLink from 'react-router-dom/NavLink';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
-        console.log('logging in.. ', values);
         return this.props.dispatch(login(values.username, values.password));
     }
 
@@ -30,8 +29,7 @@ export class LoginForm extends React.Component {
         return (
             <div>
        
-            <form className="login-container"
-                className="js-signin-form"
+            <form className="login-container js-signin-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>

@@ -2,8 +2,9 @@ import React from 'react';
 import CategoryDropdown from './categorydropdown';
 import './searchresults.css';
 import WishLists from './wishlist';
+import {wishListActions} from '../actions/wishlistactions';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-
+import store from '../store';
 import { API_BASE_URL } from '../config';
 
 
@@ -14,7 +15,7 @@ class SearchResults extends React.Component {
 			isButton: false,
 			isWish: false,
 			gift: [],
-			grocer: [],
+			MustHave: [],
 			events: [],
 			others: []
 		}
@@ -23,6 +24,7 @@ class SearchResults extends React.Component {
 
 	wishRouter(e) {
 		e.preventDefault();
+
 		let wishPack = {
 			name: e.target.dataset.name,
 			price: e.target.dataset.price,
@@ -30,51 +32,28 @@ class SearchResults extends React.Component {
 			image: e.target.dataset.image,
 			url: e.target.dataset.url
 		}
-
-		if (e.target.dataset.wish === "gift") {
-			this.addToList(wishPack, e.target.dataset.wish);
-			this.setState(
-				{ gift: this.state.gift.concat(wishPack) },
-				() => { console.log('Gift list now: ', this.state.gift) }
-			);
-		}
-
-		if (e.target.dataset.wish === "grocer") {
-			this.addToList(wishPack, e.target.dataset.wish);
-			this.setState(
-				{ grocer: this.state.grocer.concat(wishPack) },
-				() => { console.log('Grocery list now: ', this.state.grocer) }
-			);
-
-		}
-
-		if (e.target.dataset.wish === "events") {
-			//e.target.dataset.wish = Category for fetch request
-			this.addToList(wishPack, e.target.dataset.wish);
-			this.setState(
-				{
-					events: this.state.events.concat(wishPack)
-				},
-				() => { console.log('Events list now: ', this.state.events) }
-			);
-
-		}
-
-		if (e.target.dataset.wish === "others") {
-			this.addToList(wishPack, e.target.dataset.wish);
-			this.setState(
-				{ others: this.state.others.concat(wishPack) },
-				() => { console.log('Others list now: ', this.state.others) }
-			);
-
+			if (e.target.dataset.wish === "Other") {
+				let newCategory = prompt("Enter a category you would like to add this item to:");
+					if(newCategory !== null){
+						this.addToList(wishPack, newCategory);
+						window.alert(`Added item to wishlist: ${newCategory}!`);
+						window.location.reload();
+					}			
+			}
+		else{
+			if(window.confirm(`Would you like to add ${wishPack.name} to your ${e.target.dataset.wish} wishlist?`)){
+				
+				window.alert(`Added item to wishlist: ${e.target.dataset.wish}!`);
+				this.addToList(wishPack, e.target.dataset.wish);
+				window.location.reload();
+			}
 		}
 
 	}
 
 	addToList(itemData, category) {
 		console.log(itemData);
-		//5bc91e143d799d3ae4f0ce41    ******Need to obtain wishlist ID   
-		//	OR   update db by locating wishlist by username and category
+		
 		let itemPrice = `$${itemData.price}`;
 		if (itemPrice === undefined) {
 			console.log("Sale price is null, using msrp instead");
@@ -99,19 +78,10 @@ class SearchResults extends React.Component {
 				"link": `${itemData.url}`
 			})
 		})
+		.then(store.dispatch(wishListActions(window.localStorage.userName)));
 	}
 
-	findImage(itemId) {
-		fetch(`${API_BASE_URL}/Etsy/Listing/Images/?listingId=${itemId}`)
-			.then(results => {
-				return results.json();
-			})
-			.then(data => {
-				//update state
-				this.setState({ img: data.results[0].url_170x135 });
-				console.log(data.results[0].url_170x135);
-			})
-	}
+
 
 	render() {
 		return (
@@ -158,7 +128,7 @@ class SearchResults extends React.Component {
 										</div>
 										<div className="product-info-container">
 											<a className="name" href={e.url}>{e.name}</a>
-											<div className="price">$ {e.msrp}</div>
+											<div className="price">${e.regularPrice}</div>
 											<button className="listing-url" href={e.url}>Buy Now!</button>
 											<CategoryDropdown data={e} clickHandler={this.wishRouter} />
 										</div>
@@ -188,7 +158,7 @@ class SearchResults extends React.Component {
 					</div>
 				</TabPanel>
 				<TabPanel>
-					<WishLists wishes={this.state.gift} />
+					<WishLists/>
 				</TabPanel>
 
 			</Tabs>

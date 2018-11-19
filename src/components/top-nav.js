@@ -10,11 +10,12 @@ import './top-nav.css';
 export class TopNav extends React.Component {
 	logOut() {
 		this.props.dispatch(clearAuth());
+		localStorage.removeItem("userName");
 		clearAuthToken();
+		window.location.reload();
 	}
 
 	render() {
-
 		return(
 			<nav>
 				<div className ="row topnav">

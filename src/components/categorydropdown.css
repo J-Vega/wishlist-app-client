@@ -50,6 +50,10 @@
     transition: 0.3s;
 }
 
+.category-buttons:hover{
+    background-color: #f7ec9a;
+}
+
 /* The close button (x) */
 .close {
     position: absolute;

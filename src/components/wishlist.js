@@ -1,37 +1,66 @@
 import React from 'react';
 import { connect } from "react-redux";
-
+import store from '../store';
 import {wishListActions} from '../actions/wishlistactions';
 import {API_BASE_URL} from '../config';
-// import 'wishlist.css';
+import './wishlist.css';
 
 export class Wishlist extends React.Component{
-	componentDidMount(){
-		if(window.localStorage.userName){
-			this.props.dispatch(wishListActions(window.localStorage.userName));
-		}
-	} 
+	constructor(props){
+		super(props);
+		this.state = {
+			wishlist: []
+		};	
+	}
+
+	// componentDidMount(){
+	// 	if(window.localStorage.userName){
+	// 		this.props.dispatch(wishListActions(window.localStorage.userName));
+	// 	}
+	// }
+
+	deleteCategory(category){
+		if(window.confirm(`Would you like to delete category ${category} and everything inside this list?`)){
+
+			window.alert(`Deleted category!`);
+
+		fetch(`${API_BASE_URL}/Wishlist/User/${window.localStorage.userName}/Category/${category}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		.then(window.location.reload());
+
+	}
+	
+	  
+}
 
 	render(){
+		console.log(this.props);
+		const userWishlist = this.props.wishlist.map((i, index) => (		
+			<div key={i.category + index}>
+				<h3 className="category">Category: {i.category}</h3>
+				<div><button onClick={() => {this.deleteCategory(i.category)}}>X</button></div>
+				
+				{
+					i.items.map(j => (
+						<div key={j._id + j.created} className="wishlist-item-container">
+							<div className="wishlist-name">{j.name}</div>
+							<div className="wishlist-price">${j.price}</div>
+							<img className="wishlist-image" src={j.imageUrl} alt={j.name}/>
+							<a className="wishlist-listing-url" href={j.link}>Buy Now!</a>
+						</div>
+					))
+				}
 		
-		
-		const userWishlist = this.props.wishlist.map(i => (		
-			<div key={i.peoductUrl + i.name}>
-
-				{console.log(i)}
-				<div className="category">{i.text}</div>
-				<div className="name">{i.name}</div>
-				<div className="price">$ {i.salePrice}</div>
-				<img className="image" src={i.image} alt={i.name}/>
-				<a className="listing-url" href={i.productUrl}>Buy Now!</a>
-			</div>
-			
+			</div>	
 		));
 
 		return(
-	
 				<div className='user-wishlist'>
-					<h3>{this.props.title}</h3>
+					<h3>My Wishlist</h3>
 					{ userWishlist }		
 				</div>	
 			)
@@ -47,39 +76,9 @@ Wishlist.defaultProps= {
 		
 	}]
 }
+
 const mapStateToProps = state => ({ 
-	wishlist: state.wishlist
+	wishlist: state.wishlist.wishlist
 })
 
 export default connect(mapStateToProps)(Wishlist);
-
-
-//				CURRENT VERSION
-
-// export default function WishList({wishes}) {
-// 	return(
-// 		<div className="wishlist">
-// 			<h2>WISHLIST</h2>
-// 			<ul className="list">
-// 				<li className="list-wrapper">
-// 					{
-// 						wishes.map(i => (
-// 							<div>
-// 								<div className="category">{i.text}</div>
-// 								<div className="name">{i.name}</div>
-// 								<div className="price">$ {i.salePrice}</div>
-// 								<img className="image" src={i.image} alt={i.name}/>
-// 								<a className="listing-url" href={i.productUrl}>Buy Now!</a>
-// 							</div>
-// 						))
-// 					}
-// 				</li>
-// 			</ul>
-
-			
-// 		</div>
-
-
-// 	);
-
-// }

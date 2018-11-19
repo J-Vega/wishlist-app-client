@@ -1,4 +1,8 @@
 .footer{
+    
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-top: 1px solid grey;
     margin-top: 40px;
     padding: 10px;
@@ -25,4 +29,5 @@
     .footer p{
         display: none;
     }
+
 } 
