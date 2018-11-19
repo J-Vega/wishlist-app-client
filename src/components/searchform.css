@@ -1,3 +1,16 @@
 .main-body{
     clear: right;
 }
+
+.searchButton{
+    -webkit-appearance: caret;
+    font-weight: bold;
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
+.searchButton:hover{
+    cursor: pointer;
+    background-color: rgb(35, 43, 53);
+    color: white;
+}
