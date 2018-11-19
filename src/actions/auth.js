@@ -42,7 +42,6 @@ const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken.user));
-    //console.log(authToken);
     saveAuthToken(authToken);
 };
 
@@ -70,22 +69,8 @@ export const login = (username, password) => dispatch => {
                 //console.log("Logged in! Storing username and auth token");
                 storeAuthInfo(authToken, dispatch);
                 localStorage.setItem('userName', username);
-
+                window.location.reload();
                 dispatch(wishListActions(username));
-
-                // fetch(`${API_BASE_URL}/Wishlist/User/${username}`)
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log("Found user wishlist");
-                //         console.log(data);
-
-
-                //         //REDUXIFY!
-
-                //         // this.setState({
-                //         //     wishlist: [...data]
-                //         // })
-                //     })
             })
 
             .catch(err => {
@@ -121,6 +106,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+        .then(dispatch(wishListActions(localStorage.userName)))
         .catch(err => {
             // We couldn't get a refresh token because our current credentials
             // are invalid or expired, or something else went wrong, so clear
