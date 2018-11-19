@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
         
         return (
             <div className="footer">
-                <a href="/"><img src={'icon.jpg'} className="footer-icon"/></a>
+                <a href="/"><img src={'icon.jpg'} alt="Website logo of a shopping cart" className="footer-icon"/></a>
                 <p>Jonathan Vega</p>
                 <p>License: MIT</p>
             </div>
