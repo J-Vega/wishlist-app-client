@@ -1,0 +1,14 @@
+
+.register-header{
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    margin-top: 20px;
+}
+
+.register-form{
+    font-family: Human BBY Web,Arial,Helvetica,sans-serif;
+    border: 2px solid white;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 12px;
+}
