@@ -33,6 +33,7 @@ class SearchForm extends Component{
     })
   }
 
+
   /*
   Nov/4 comment
     to get information: (Use Redux)
@@ -49,39 +50,11 @@ class SearchForm extends Component{
     }
     ---------------------------
   */
+ 
 
   search(e){
     e.preventDefault();
 
-    /*
-    Nov/4 comment
-      - why are you using the localhost url when getting api call from walmart?
-      -it will occur following error:
-      --SyntaxError: Unexpected token < in JSON at position 0
-      -the below api call will return plain HTML code of its index.html
-      -because the api call calling its localhost.
-    */
-
-    /*
-    Nov/5 comment
-    - Fetching does not work for walmart
-    - However, the logic below is correct
-    let apiUrls = [
-      `//api.walmartlabs.com/v1/search?query=${this.state.inputValue}&format=json&apiKey=${walAPI}`
-      // `${API_BASE_URL}/BestBuy/Listings/?searchTerm=macbook`,
-      // `${API_BASE_URL}/Etsy/Listings/?searchTerm=macbook`
-      ]
-    Promise.all(apiUrls.map(url =>
-      fetch(url)
-      .then(res => res.json())
-    ))
-    .then(data => {
-      this.setState({
-        result: data
-      })
-    })
-    .catch(err => console.log(err));
-    */
     fetch(`${API_BASE_URL}/Walmart/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
@@ -168,7 +141,7 @@ class SearchForm extends Component{
         <div className="row main-body">
             {/* <form className="js-search-form" onSubmit={this.handleSubmit}> */}
             <form className="js-search-form" onSubmit={e => this.search(e)}>
-              <div className ="col-1 search-container"></div>
+             
               <div className ="col-2 search-container">
                   <input value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)} type="text" className ="js-query searchBar searchTerm" required></input>
               </div>
