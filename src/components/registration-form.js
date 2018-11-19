@@ -4,9 +4,13 @@ import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+
+import './registration-form.css';
+
 const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('password');
  
+
 
 export class RegistrationForm extends React.Component {
     onSubmit(values) {
@@ -19,8 +23,10 @@ export class RegistrationForm extends React.Component {
 
     render() {
         return (
+            <div>
+            <h2 className="register-header">Free Registration Form</h2>
             <form
-                className="login-form"
+                className="register-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
@@ -62,6 +68,7 @@ export class RegistrationForm extends React.Component {
                     Register
                 </button>
             </form>
+            </div>
         );
     }
 }
