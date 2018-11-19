@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import LogInForm from './login-form.js';
@@ -23,7 +23,7 @@ export class TopNav extends React.Component {
 						this.props.loggedIn ? <button className="logout-button" onClick={() => this.logOut()}>Log out</button> : <LogInForm/>
 					}
 					{
-						this.props.loggedIn ? <p className="user-greeting">Welcome, {window.localStorage.userName}!</p> : <p className="user-greeting">Welcome, Guest!</p>
+						this.props.loggedIn ? <p className="user-greeting">Welcome, {window.localStorage.userName}!</p> : <p className="user-greeting"></p>
 					}
 
 					
