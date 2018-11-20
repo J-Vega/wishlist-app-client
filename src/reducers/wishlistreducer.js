@@ -6,7 +6,6 @@ import {
 } from '../actions/wishlistactions';
 
 const initialState = {
-    //state.products.items is here
     wishlist: [],
     loading: false,
     error: null
