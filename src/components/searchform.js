@@ -64,9 +64,7 @@ class SearchForm extends Component{
     fetch(`${API_BASE_URL}/Etsy/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
-      data.forEach(data => {
-        this.findImage(data.listing_id);
-      });
+      console.log(data);
       this.setState({
         results: data,
         searchResults: {

@@ -23,10 +23,17 @@ const CategoryDropdown = (props) => {
                               <div key={`${e.wish} ${data.itemId}`}>
                                 <button className="category-buttons"
                                     data-name={data.name} 
+                                    data-etsyname={data.title} 
                                     data-price={data.salePrice}
+                                    data-bestbuyprice={data.regularPrice}
+                                    data-etsyprice={data.price}
                                     data-image={data.mediumImage}
+                                    data-bestbuyimage={data.image}
+                                    data-etsyimage={"https://upload.wikimedia.org/wikipedia/commons/a/aa/Etsy_logo_lg_rgb.png"}
                                     data-key={data.itemId}
                                     data-url={data.productUrl}
+                                    data-bestbuyurl={data.url}
+                                    data-etsyurl={data.url}
                                     data-msrp={data.msrp}
                                     data-wish= {e.wish}
                                     data-text={e.text}

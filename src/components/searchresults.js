@@ -22,35 +22,6 @@ class SearchResults extends React.Component {
 		this.wishRouter = this.wishRouter.bind(this);
 	}
 
-	wishRouter(e) {
-		e.preventDefault();
-
-		let wishPack = {
-			name: e.target.dataset.name,
-			price: e.target.dataset.price,
-			msrp: e.target.dataset.msrp,
-			image: e.target.dataset.image,
-			url: e.target.dataset.url
-		}
-			if (e.target.dataset.wish === "Other") {
-				let newCategory = prompt("Enter a category you would like to add this item to:");
-					if(newCategory !== null){
-						this.addToList(wishPack, newCategory);
-						window.alert(`Added item to wishlist: ${newCategory}!`);
-						window.location.reload();
-					}			
-			}
-		else{
-			if(window.confirm(`Would you like to add ${wishPack.name} to your ${e.target.dataset.wish} wishlist?`)){
-				
-				window.alert(`Added item to wishlist: ${e.target.dataset.wish}!`);
-				this.addToList(wishPack, e.target.dataset.wish);
-				window.location.reload();
-			}
-		}
-
-	}
-
 	addToList(itemData, category) {
 		console.log(itemData);
 		
@@ -80,6 +51,102 @@ class SearchResults extends React.Component {
 		})
 		.then(store.dispatch(wishListActions(window.localStorage.userName)));
 	}
+
+	wishRouter(e) {
+		e.preventDefault();
+
+		let wishPack = {
+			name: e.target.dataset.name,
+			price: e.target.dataset.price,
+			msrp: e.target.dataset.msrp,
+			image: e.target.dataset.image,
+			url: e.target.dataset.url
+		}
+		console.log(this);
+			if (e.target.dataset.wish === "Other") {
+				let newCategory = prompt("Enter a category you would like to add this item to:");
+					if(newCategory !== null){
+						this.addToList(wishPack, newCategory);
+						window.alert(`Added item to wishlist: ${newCategory}!`);
+						window.location.reload();
+					}			
+			}
+		else{
+			if(window.confirm(`Would you like to add ${wishPack.name} to your ${e.target.dataset.wish} wishlist?`)){
+				
+				window.alert(`Added item to wishlist: ${e.target.dataset.wish}!`);
+				this.addToList(wishPack, e.target.dataset.wish);
+				window.location.reload();
+			}
+		}
+
+	}
+
+	bestBuyRouter(e) {
+	
+		e.preventDefault();
+		
+		let wishPack = {
+			name: e.target.dataset.name,
+			price: e.target.dataset.bestbuyprice,
+			msrp: e.target.dataset.msrp,
+			image: e.target.dataset.bestbuyimage,
+			url: e.target.dataset.bestbuyurl
+		}
+		console.log(wishPack);
+		console.log(this);
+			if (e.target.dataset.wish === "Other") {
+				let newCategory = prompt("Enter a category you would like to add this item to:");
+					if(newCategory !== null){
+						this.addToList(wishPack, newCategory);
+						window.alert(`Added item to wishlist: ${newCategory}!`);
+						window.location.reload();
+					}			
+			}
+		else{
+			if(window.confirm(`Would you like to add ${wishPack.name} to your ${e.target.dataset.wish} wishlist?`)){
+				
+				window.alert(`Added item to wishlist: ${e.target.dataset.wish}!`);
+				this.addToList(wishPack, e.target.dataset.wish);
+				window.location.reload();
+			}
+		}
+
+	}
+
+	etsyRouter(e) {
+	
+		e.preventDefault();
+		
+		let wishPack = {
+			name: e.target.dataset.etsyname,
+			price: e.target.dataset.etsyprice,
+			msrp: e.target.dataset.msrp,
+			image: e.target.dataset.etsyimage,
+			url: e.target.dataset.etsyurl
+		}
+		console.log(wishPack);
+		console.log(this);
+			if (e.target.dataset.wish === "Other") {
+				let newCategory = prompt("Enter a category you would like to add this item to:");
+					if(newCategory !== null){
+						this.addToList(wishPack, newCategory);
+						window.alert(`Added item to wishlist: ${newCategory}!`);
+						window.location.reload();
+					}			
+			}
+		else{
+			if(window.confirm(`Would you like to add ${wishPack.name} to your ${e.target.dataset.wish} wishlist?`)){
+				
+				window.alert(`Added item to wishlist: ${e.target.dataset.wish}!`);
+				this.addToList(wishPack, e.target.dataset.wish);
+				window.location.reload();
+			}
+		}
+
+	}
+
+	
 
 
 
@@ -130,7 +197,7 @@ class SearchResults extends React.Component {
 											<a className="name" href={e.url}>{e.name}</a>
 											<div className="price">${e.regularPrice}</div>
 											<button className="listing-url" href={e.url}>Buy Now!</button>
-											<CategoryDropdown data={e} clickHandler={this.wishRouter} />
+											<CategoryDropdown data={e} clickHandler={(e) => this.bestBuyRouter(e)} />
 										</div>
 									</div>
 								))
@@ -150,7 +217,7 @@ class SearchResults extends React.Component {
 											<div className="name">{e.title}</div>
 											<div className="price">$ {e.price}</div>
 											<button className="listing-url" href={e.url}>Buy Now!</button>
-											<CategoryDropdown data={e} clickHandler={this.wishRouter} />
+											<CategoryDropdown data={e} clickHandler={(e) => this.etsyRouter(e)} />
 										</div>
 									</div>
 								))
