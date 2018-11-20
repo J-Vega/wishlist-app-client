@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-import store from '../store';
-import {wishListActions} from '../actions/wishlistactions';
 import {API_BASE_URL} from '../config';
 import './wishlist.css';
 
@@ -12,12 +10,6 @@ export class Wishlist extends React.Component{
 			wishlist: []
 		};	
 	}
-
-	// componentDidMount(){
-	// 	if(window.localStorage.userName){
-	// 		this.props.dispatch(wishListActions(window.localStorage.userName));
-	// 	}
-	// }
 
 	deleteCategory(category){
 		if(window.confirm(`Would you like to delete category ${category} and everything inside this list?`)){
@@ -38,7 +30,7 @@ export class Wishlist extends React.Component{
 }
 
 	render(){
-		console.log(this.props);
+
 		const userWishlist = this.props.wishlist.map((i, index) => (		
 			<div key={i.category + index}>
 				<h3 className="category">Category: {i.category}</h3>
