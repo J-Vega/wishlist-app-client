@@ -23,15 +23,12 @@ class SearchResults extends React.Component {
 	}
 
 	addToList(itemData, category) {
-		console.log(itemData);
 		
 		let itemPrice = `$${itemData.price}`;
 		if (itemPrice === undefined) {
-			console.log("Sale price is null, using msrp instead");
 			itemPrice = `$${itemData.msrp}`;
 		};
 		if (itemPrice === undefined) {
-			console.log("MSRP is undefined as well! Set price to N/A");
 			itemPrice = "N/A";
 		}
 
@@ -62,7 +59,6 @@ class SearchResults extends React.Component {
 			image: e.target.dataset.image,
 			url: e.target.dataset.url
 		}
-		console.log(this);
 			if (e.target.dataset.wish === "Other") {
 				let newCategory = prompt("Enter a category you would like to add this item to:");
 					if(newCategory !== null){
@@ -93,8 +89,7 @@ class SearchResults extends React.Component {
 			image: e.target.dataset.bestbuyimage,
 			url: e.target.dataset.bestbuyurl
 		}
-		console.log(wishPack);
-		console.log(this);
+
 			if (e.target.dataset.wish === "Other") {
 				let newCategory = prompt("Enter a category you would like to add this item to:");
 					if(newCategory !== null){
@@ -125,8 +120,7 @@ class SearchResults extends React.Component {
 			image: e.target.dataset.etsyimage,
 			url: e.target.dataset.etsyurl
 		}
-		console.log(wishPack);
-		console.log(this);
+
 			if (e.target.dataset.wish === "Other") {
 				let newCategory = prompt("Enter a category you would like to add this item to:");
 					if(newCategory !== null){

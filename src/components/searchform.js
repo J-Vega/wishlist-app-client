@@ -38,7 +38,6 @@ class SearchForm extends Component{
     fetch(`${API_BASE_URL}/Walmart/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       this.setState({
         results: data,
         searchResults: {
@@ -51,7 +50,7 @@ class SearchForm extends Component{
     fetch(`${API_BASE_URL}/BestBuy/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+
       this.setState({
         results: data,
         searchResults: {
@@ -64,7 +63,7 @@ class SearchForm extends Component{
     fetch(`${API_BASE_URL}/Etsy/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+
       this.setState({
         results: data,
         searchResults: {

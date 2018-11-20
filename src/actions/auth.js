@@ -46,10 +46,8 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const login = (username, password) => dispatch => {
-    console.log("logging in....");
+    
     dispatch(authRequest());
-    console.log(API_BASE_URL);
-    console.log(`${API_BASE_URL}/auth/login`);
     return (
         fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
@@ -66,7 +64,7 @@ export const login = (username, password) => dispatch => {
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
             .then(({ authToken }) => {
-                //console.log("Logged in! Storing username and auth token");
+               
                 storeAuthInfo(authToken, dispatch);
                 localStorage.setItem('userName', username);
                 window.location.href = `/`;
@@ -95,7 +93,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = localStorage.getItem('authToken');
     
-    //console.log(authToken);
     return fetch(`${API_BASE_URL}/auth/refresh`, {
         method: 'POST',
         headers: {

@@ -4,7 +4,7 @@ import React from 'react'
 import "./categorydropdown.css";
 
 const CategoryDropdown = (props) => {
-        console.log('re-render');
+    
         const data = props.data;
         const clickHandler = props.clickHandler
         const wishes = [
