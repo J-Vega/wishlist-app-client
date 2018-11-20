@@ -25,8 +25,6 @@ export default function wishlistReducer(state = initialState, action) {
 
             console.log(action.wishlist);
             return Object.assign({}, state, {
-                wishlist: initialState,
-                
                 wishlist: [
                     ...state.wishlist, {
                         category: action.wishlist.category,
