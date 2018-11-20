@@ -26,31 +26,11 @@ class SearchForm extends Component{
     this.search = this.search.bind(this);
   }
 
-  //Update text value to use when dispatching fetch requests
   updateInputValue(evt){
     this.setState({
       inputValue: evt.target.value
     })
   }
-
-
-  /*
-  Nov/4 comment
-    to get information: (Use Redux)
-    bind below fn to onClick
-    -- fix the async api call error !
-    -- And need more "Reduce" files for each dispatching to use redux module
-    -- take a look at a file: '/reducers/walreducer.js'
-    --------------------------
-    search(e){
-      e.preventDefault();
-      this.props.dispatch(fetchWalmartProducts(this.state.inputValue))
-      this.props.dispatch(fetchBestBuyProducts(this.state.inputValue));
-      this.props.dispatch(fetchEtsyProducts(this.state.inputValue));
-    }
-    ---------------------------
-  */
- 
 
   search(e){
     e.preventDefault();
@@ -84,8 +64,6 @@ class SearchForm extends Component{
     fetch(`${API_BASE_URL}/Etsy/Listings/?searchTerm=${this.state.inputValue}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      //this.findImage(data.listing_id);
       data.forEach(data => {
         this.findImage(data.listing_id);
       });
@@ -100,22 +78,9 @@ class SearchForm extends Component{
   
   };
 
-  findImage(itemId){
-		fetch(`${API_BASE_URL}/Etsy/Listing/Images/?listingId=${itemId}`)
-			.then(results => {
-				return results.json();
-			})
-			.then(data => {
-        console.log(data);
-				//update state
-        console.log(data.results[0].url_170x135); 
-			})
-  };
-  
   render(){
       return (
         <div className="row main-body">
-            {/* <form className="js-search-form" onSubmit={this.handleSubmit}> */}
             <form className="js-search-form" onSubmit={e => this.search(e)}>
              
               <div className ="col-2 search-container">
@@ -127,7 +92,6 @@ class SearchForm extends Component{
                   </button>
               </div>
             </form>
-            {/* <SearchResults results = {this.state.results}/>    */}
             <SearchResults className="search-results" results = {this.state.searchResults}/>   
         </div>
   );
