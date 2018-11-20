@@ -1,6 +1,6 @@
 # UniCart
   #### By: Jonathan Vega
-  
+  *demo account: USERNAME: testuser   PASSWORD: password*
 ## Description
 ### Find product listings across multiple retailers to create and manage wishlists in one place.
 
