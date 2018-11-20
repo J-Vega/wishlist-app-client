@@ -1,23 +1,13 @@
 import {
     FIND_WISHLIST_BEGIN,
     FIND_WISHLIST_SUCCESS,
-    FIND_WISHLIST_FAILURE
+    FIND_WISHLIST_FAILURE,
+    DELETE_WISHLIST_SUCCESS
 } from '../actions/wishlistactions';
 
 const initialState = {
     //state.products.items is here
-    wishlist: [{
-        text: "Category - Christmas",
-        items: [
-            {
-                name: "Fridge",
-                salePrice: "200",
-                image: "pictureurl.com",
-                productUrl: "google.com"
-            }
-        ]
-
-    }],
+    wishlist: [],
     loading: false,
     error: null
 };
@@ -34,13 +24,16 @@ export default function wishlistReducer(state = initialState, action) {
 
         case FIND_WISHLIST_SUCCESS:
 
-            console.log(action.wishlist.items);
+            console.log(action.wishlist);
             return Object.assign({}, state, {
+                wishlist: initialState,
+                
                 wishlist: [
-                    ...state.wishlist, {                    
-                    items: action.wishlist    
-                }
-            ],
+                    ...state.wishlist, {
+                        category: action.wishlist.category,
+                        items: action.wishlist.items
+                    }
+                ],
                 loading: false
             });
 
@@ -56,6 +49,19 @@ export default function wishlistReducer(state = initialState, action) {
                 error: action.payload.error,
                 items: []
             };
+
+        case DELETE_WISHLIST_SUCCESS:
+
+            console.log(action);
+            return Object.assign({}, state, {
+                wishlist: [
+                    ...state.wishlist, {
+                        category: action.wishlist.category,
+                        items: action.wishlist.items
+                    }
+                ],
+                loading: false
+            });
 
         default:
             // ALWAYS have a default case in a reducer
