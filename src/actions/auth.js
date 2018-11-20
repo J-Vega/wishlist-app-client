@@ -69,7 +69,7 @@ export const login = (username, password) => dispatch => {
                 //console.log("Logged in! Storing username and auth token");
                 storeAuthInfo(authToken, dispatch);
                 localStorage.setItem('userName', username);
-                window.location.reload();
+                window.location.href = `/`;
                 dispatch(wishListActions(username));
             })
 
