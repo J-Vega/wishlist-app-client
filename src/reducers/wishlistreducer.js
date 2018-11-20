@@ -23,7 +23,6 @@ export default function wishlistReducer(state = initialState, action) {
 
         case FIND_WISHLIST_SUCCESS:
 
-            console.log(action.wishlist);
             return Object.assign({}, state, {
                 wishlist: [
                     ...state.wishlist, {
@@ -49,7 +48,6 @@ export default function wishlistReducer(state = initialState, action) {
 
         case DELETE_WISHLIST_SUCCESS:
 
-            console.log(action);
             return Object.assign({}, state, {
                 wishlist: [
                     ...state.wishlist, {
