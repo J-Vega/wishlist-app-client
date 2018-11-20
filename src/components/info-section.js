@@ -17,8 +17,9 @@ export default function InfoSection(props) {
         <p className="description">A more convenient way to window shop online!</p>
         <p className="description">Use one search bar to find product listings from Walmart, Best Buy, and Etsy (with more to come)!</p>
         <p className="description">Select a category to add the product to your wishlist to save it for later!</p>
+        <p className="description">Remove any wishlist in your wishlist tab if you no longer need it.</p>
         <p className="description">Ready to buy something on your list? Click on its 'Buy Now' button to go straight to its source!</p>
-        {/* <p className="description">Use one search bar to browse through Walmart, Best Buy, and Etsy (more to come)! Create an account to manage a wishlist with multiple categories without having to navigate to every website!</p> */}
+        <p className="description">Demo Account: "testuser" "password"</p>
     </div>
   );
 }
