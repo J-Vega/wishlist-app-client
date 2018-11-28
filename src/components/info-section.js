@@ -19,7 +19,6 @@ export default function InfoSection(props) {
         <p className="description">Select a category to add the product to your wishlist to save it for later!</p>
         <p className="description">Remove any wishlist in your wishlist tab if you no longer need it.</p>
         <p className="description">Ready to buy something on your list? Click on its 'Buy Now' button to go straight to its source!</p>
-        <p className="description">Demo Account: "testuser" "password"</p>
     </div>
   );
 }
