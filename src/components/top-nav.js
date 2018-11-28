@@ -8,6 +8,12 @@ import LogInForm from './login-form.js';
 import './top-nav.css';
 
 export class TopNav extends React.Component {
+	componentDidMount(){
+		if(!this.props.loggedIn){
+			window.alert("Demo Account: USERNAME - testuser PASSWORD - password")
+		}
+	}
+
 	logOut() {
 		this.props.dispatch(clearAuth());
 		localStorage.removeItem("userName");
